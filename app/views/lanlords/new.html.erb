@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <%= stylesheet_link_tag "application.css" %>
+    <h1 class="display-3">Landlord Sign-Up</h1>
+    <p>We need your real name so your Tenats can find you.</p>
+    <p>Make your Username and Password something memerable</p>
+    <%= form_for :user, url: '/users' do |f| %>
+
+      <div class="field">Realname: <%= f.text_field :realname %></div>
+      <div class="field">Username: <%= f.text_field :username %></div>
+      <div class="field">Password: <%= f.password_field :password %></div>
+      <div class="field">Re-Password: <%= f.password_field :password_confirmation %></div>
+      <%= f.submit :create, class: "btn btn-primary" %>
+
+    <% end %>
+
+</div>

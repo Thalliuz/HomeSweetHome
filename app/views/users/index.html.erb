@@ -1,0 +1,24 @@
+<div>
+  <%= stylesheet_link_tag "application.css" %>
+  <% if session[:id]%>
+    <p>Hello <%= @username %></p>
+  <div class="p-3 mb-2 bg-primary text-white">.bg-primary
+    If you need any help using the app please check the information section.
+    Welcome to Landlord the App that will make communication with your landlord much easier
+  </div>
+    <a href="">Account</a>
+    <a href="">Landlord</a>
+  <% else %>
+  <%end%>
+  <div class="dropdown">
+    <span>Sign-Up</span>
+    <div class="dropdown-content">
+      <p><a href="/users/new">Tenant</a></p><br>
+      <p><a href="/lanlords/new">Landlord</a></p>
+    </div>
+  </div>
+    <p> Welcome to the Landlord app. Here you will be able to communicate with your landlord. Simply sign-up search your landlords name and sync with them. Let them know what issues you're having and they will get a message directly and quickly.</p>
+    <p>If your a Landlord go ahead and sign up as well. This will make it easier to communicate with your tenants. Gain the ability to have all the pending issues you need to deal with in one place. Respond to your tenants with ease and let them know when you will be able to get to them or any issues of your own that you are having. </p>
+
+  
+</div>
