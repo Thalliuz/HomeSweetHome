@@ -1,4 +1,4 @@
-class PropertiesController < ActionController::Base
+class PropertysController < ActionController::Base
   def index
   end
 
