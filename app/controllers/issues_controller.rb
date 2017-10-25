@@ -1,4 +1,6 @@
 class IssuesController < ActionController::Base
+  layout "application"
+  
   def show
     id = params[:id]
     issue = Issue.find(id)

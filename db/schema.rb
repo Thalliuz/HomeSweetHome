@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20171025154113) do
   end
 
   create_table "owners", force: :cascade do |t|
-    t.string "realname"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "address"
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false
@@ -45,7 +47,9 @@ ActiveRecord::Schema.define(version: 20171025154113) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "realname"
+    t.string "address"
+    t.string "firstname"
+    t.string "lastname"
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false

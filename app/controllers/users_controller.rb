@@ -1,4 +1,5 @@
 class UsersController < ActionController::Base
+  layout "application"
   
   def index
     @user = User.all

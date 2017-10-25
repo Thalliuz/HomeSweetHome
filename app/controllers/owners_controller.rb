@@ -1,4 +1,5 @@
 class OwnersController < ActionController::Base
+  layout "application"
   
   def index
   end

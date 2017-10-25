@@ -1,0 +1,35 @@
+.landing-page {
+  background: url('landlord.jpg') no-repeat center center fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+
+.header-logo {
+  left: 15px;
+  position: absolute;
+  top: -3px;
+  width: 20%;
+}
+
+.logo-wrapper {
+  display: block;
+  margin: 0 auto;
+  margin-top: 230px;
+  width: 390px;
+}
+
+.button-wrapper {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 196px;
+
+  .btn-secondary {
+    background-color: #363C3F;
+    border-color: #363C3F;
+  }
+}
