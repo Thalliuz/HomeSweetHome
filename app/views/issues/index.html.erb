@@ -1,0 +1,15 @@
+<div>
+  <div class="card-container">
+    <% @issues.each do |issue| %>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="http://via.placeholder.com/318x180">
+        <div class="card-body">
+          <h4 class="card-title"><%= issue.name %></h4>
+          <h6 class="card-subtitle mb-2 text-muted"><%= issue.address %><br></h6>
+          <p class="card-text"><%= issue.detail %></p>
+          <%= link_to "More Details", issue_path(issue), class: "btn btn-primary"%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

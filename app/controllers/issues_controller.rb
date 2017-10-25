@@ -1,8 +1,12 @@
 class IssuesController < ActionController::Base
   layout "application"
   
-  def show
+  def index
     @issues = Issue.all
+  end
+
+  def show
+    @issue = Issue.find(params[:id])
   end
   
   def new
