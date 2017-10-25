@@ -39,6 +39,11 @@ class UsersController < ActionController::Base
     session[:id] = nil
     redirect_to "/index" 
   end  
+
+  def login
+    
+  end
+
 end
 
 private
