@@ -1,0 +1,12 @@
+<div>
+  Keep your list of properties up to date so that Tenants can keep in contact about them.
+  <%= form_for :user, url: '/users' do |f| %>
+
+    <div class="field">Address: <%= f.text_field :address %></div>
+    <div class="field">Apt #: <%= f.text_field :number %></div>
+    </div>
+    <%= f.submit :create, class: "btn btn-primary" %>
+
+  <% end %>
+
+</div>
