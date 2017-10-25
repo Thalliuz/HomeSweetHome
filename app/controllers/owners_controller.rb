@@ -6,8 +6,7 @@ class OwnersController < ActionController::Base
 
   def show
     id = params[:id]
-    owner = Owner.find(id)
-    @username = owner.username
+    @owner = Owner.find(id)
   end
   
   def new

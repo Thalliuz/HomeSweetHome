@@ -7,8 +7,7 @@ class UsersController < ActionController::Base
 
   def show
     id = params[:id]
-    user = User.find(id)
-    @username = user.username
+    @user = User.find(id)
   end
   
   def new
