@@ -10096,3 +10096,203 @@ Processing by OwnersController#show as HTML
 Completed 200 OK in 39ms (Views: 21.2ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:40:37 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:10: syntax error, unexpected keyword_else, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:15: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:17: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/issues/show.html.erb:10: syntax error, unexpected keyword_else, expecting keyword_end
+app/views/issues/show.html.erb:15: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/issues/show.html.erb:17: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:41:42 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:10: syntax error, unexpected keyword_else, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:15: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:17: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/issues/show.html.erb:10: syntax error, unexpected keyword_else, expecting keyword_end
+app/views/issues/show.html.erb:15: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/issues/show.html.erb:17: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:42:06 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:14: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:16: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/issues/show.html.erb:14: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/issues/show.html.erb:16: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:42:58 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_nav.html.erb (3.9ms)
+Completed 200 OK in 279ms (Views: 276.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:43:20 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:43:38 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:44:23 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/anthonyhaler/Desktop/lan/Landlord/app/views/issues/show.html.erb:11: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/issues/show.html.erb:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/issues/show.html.erb:11: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:44:36 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (11.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 34ms (Views: 30.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:44:46 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:46:15 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.3ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 25ms (Views: 22.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:47:02 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 29ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:47:17 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:47:48 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.3ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:50:08 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-25 16:50:23 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_nav.html.erb (2.9ms)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-25 16:50:25 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_nav.html.erb (4.6ms)
+Completed 200 OK in 65ms (Views: 61.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-25 16:52:42 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-25 16:52:46 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  Rendering issues/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.3ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/show.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_nav.html.erb (2.7ms)
+Completed 200 OK in 64ms (Views: 59.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-25 16:52:48 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_nav.html.erb (26.6ms)
+Completed 200 OK in 143ms (Views: 135.2ms | ActiveRecord: 0.0ms)
+
+

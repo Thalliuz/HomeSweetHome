@@ -1,7 +1,11 @@
 <div>
-  <% @issues.each do |issue|%>
-  <%= issue.name%>
-  <%= issue.address%>
-  <%= issue.number%>
-  <%= issue.detail%>
+  <br><br><br><br>
+  <% @issues.each do |issue| %>
+    <div class="p-3 mb-2 bg-primary text-white">
+      Name: <%= issue.name %><br>
+      Address: <%= issue.number %>
+      <%= issue.address %><br>
+      Problem: <%= issue.detail%>
+    </div><br>
+  <%end%>
 </div>

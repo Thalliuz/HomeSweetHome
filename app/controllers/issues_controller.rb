@@ -2,10 +2,7 @@ class IssuesController < ActionController::Base
   layout "application"
   
   def show
-    id = params[:id]
-    issue = Issue.find(id)
-    @issue_address = issue.address
-    @issue_details = issue.details
+    @issues = Issue.all
   end
   
   def new
