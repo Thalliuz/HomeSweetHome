@@ -41,7 +41,7 @@ class UsersController < ActionController::Base
   end  
 
   def login
-    
+     
   end
 
 end
