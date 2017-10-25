@@ -6,7 +6,7 @@ class CreateIssues < ActiveRecord::Migration[5.1]
       t.string :number
       t.text :detail
       t.references :user
-      t.references :lanlord
+      t.references :owner
 
       t.timestamps
     end

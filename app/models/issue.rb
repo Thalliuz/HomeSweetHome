@@ -1,5 +1,5 @@
 class Issue < ApplicationRecord
-  belongs_to :lanlord
+  belongs_to :owner
   belongs_to :user
   
 end

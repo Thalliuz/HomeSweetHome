@@ -1,19 +1,19 @@
-class PropertysController < ActionController::Base
+class PropertiesController < ActionController::Base
   def index
   end
 
   def show
     id = params[:id]
-    propertys = Property.find(id)
-    @Property.address = propertys.address
+    properties = Property.find(id)
+    @Property.address = properties.address
   end
   
   def new
-    @propertys = Property.new
+    @properties = Property.new
   end
 
   def create
-    @propertys = Property.new(property_params)
+    @properties = Property.new(property_params)
 
       render 'new'
     end
