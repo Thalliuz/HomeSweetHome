@@ -11215,3 +11215,157 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 46ms (Views: 42.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-26 10:07:58 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (313.6ms)
+  Rendered layouts/_nav.html.erb (2.4ms)
+Completed 200 OK in 403ms (Views: 392.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-26 10:08:06 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (16.3ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 106ms (Views: 60.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-26 10:08:15 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcFv37b1GvhxTNGOh+CC2PvszoB1hA1EUnuo9C5yAZ1zRzmGjvwQeBFGGY/jq3/IpINObSmf4sLC1VYF5vyvag==", "user"=>{"username"=>"an", "firstname"=>"an", "lastname"=>"an", "address"=>"ann", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameters: :firstname, :lastname, :address
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "an"], ["password_digest", "$2a$10$xLRofMM1/imGU3zKhy991.c6RCn/qzRcdn4sQ8u.IO5/811zgco8K"], ["created_at", "2017-10-26 14:08:15.561395"], ["updated_at", "2017-10-26 14:08:15.561395"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/issues/show
+Completed 302 Found in 88ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/issues/show" for 127.0.0.1 at 2017-10-26 10:08:15 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 14ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Issue with 'id'=show):
+  
+app/controllers/issues_controller.rb:9:in `show'
+Started POST "/users" for 127.0.0.1 at 2017-10-26 10:09:44 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tL/z7u8uRcwkfaOpgcyDl7iquCAAFewNq+poVk1auTFoK9U9jG+YIH7OZmjifF0+g1KF7B2frsd+rMg4Q3xfnA==", "user"=>{"username"=>"an", "firstname"=>"an", "lastname"=>"an", "address"=>"ann", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameters: :firstname, :lastname, :address
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "an"], ["password_digest", "$2a$10$vqBC8Dolu1o53ZkgMKAUkume2aGerjxwZK6DqoX9pPhW5OXYfjxby"], ["created_at", "2017-10-26 14:09:45.119904"], ["updated_at", "2017-10-26 14:09:45.119904"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/issues/index
+Completed 302 Found in 114ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/issues/index" for 127.0.0.1 at 2017-10-26 10:09:45 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 8ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Issue with 'id'=index):
+  
+app/controllers/issues_controller.rb:9:in `show'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-26 10:09:49 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_nav.html.erb (2.4ms)
+Completed 200 OK in 43ms (Views: 38.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-26 10:10:00 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"op8kQkEe5wHlIucmaQQ5S5MVMvpzBsNf8D/cobzeNDd+CwKRIl867b+RIucKtOfiqO0PNm6MgZUleXzPsvjSmg==", "user"=>{"username"=>"wer", "firstname"=>"qwre", "lastname"=>"qwr", "address"=>"qrw", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameters: :firstname, :lastname, :address
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "wer"], ["password_digest", "$2a$10$p07FhiclTW0mBR32d3LWw.gkORSCSjfLFcHMOwr6iyH1ParYN/b/u"], ["created_at", "2017-10-26 14:10:00.744146"], ["updated_at", "2017-10-26 14:10:00.744146"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/issues/index
+Completed 302 Found in 88ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/issues/index" for 127.0.0.1 at 2017-10-26 10:10:00 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Issue with 'id'=index):
+  
+app/controllers/issues_controller.rb:9:in `show'
+Started GET "/users/issues/index" for 127.0.0.1 at 2017-10-26 10:10:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/issues/index"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/issues/index" for 127.0.0.1 at 2017-10-26 10:10:55 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Issue with 'id'=index):
+  
+app/controllers/issues_controller.rb:9:in `show'
+Started GET "/issues/1" for 127.0.0.1 at 2017-10-26 10:11:04 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 50ms (Views: 31.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/issues/index" for 127.0.0.1 at 2017-10-26 10:11:12 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Issue with 'id'=index):
+  
+app/controllers/issues_controller.rb:9:in `show'
