@@ -6,7 +6,8 @@ class IssuesController < ActionController::Base
   end
 
   def show
-    @issue = Issue.find(params[:id])
+    id = session[:user_id]
+    @issues = User.find(id).issues
   end
   
   def new
@@ -23,5 +24,5 @@ end
 private
 
 def issue_params
-  params.require(:issue).permit(:name, :address,  :number, :detail)
+  params.require(:issue).permit(:name, :address, :number, :detail)
 end

@@ -3,11 +3,10 @@
 <div>
   To report an issue to your landlord please fill out the fourm below and submit it. 
   
-  <%= form_for :user, url: '/users' do |f| %>
+  <%= form_for(@issue) do |f| %>
 
     <div class="field">Your Name: <%= f.text_field :name %></div>
     <div class="field">Your Address: <%= f.text_field :address %></div>
-    <div class="field">Apt #: <%= f.password_field :number %></div>
     <div class="field">Description: <%= f.text_area :detail %></div>
     <%= f.submit :create, class: "btn btn-primary" %>
 

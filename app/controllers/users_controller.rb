@@ -18,7 +18,7 @@ class UsersController < ActionController::Base
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/issues/user_id'
+      'redirect_to “/users/#{@user.id}'
     else
       render 'new'
     end

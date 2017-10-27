@@ -7,7 +7,11 @@ class WelcomeController < ApplicationController
   def login
     @user = User.find_by(username: params[:username]) || @owner = Owner.find_by(username: params[:username])
     session[:id] = @user.id || @owner.id
-    redirect to('/issues')
+    if @owner 
+      redirect_to "/owners/#{@owner.id}"
+    else
+      redirect_to "/users/#{@user.id}"
+    end 
   end
 
   def destroy  
