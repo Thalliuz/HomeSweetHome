@@ -23,31 +23,10 @@ class UsersController < ActionController::Base
       render 'new'
     end
   end
-  
-  # def create
-  #   p "***************"
-  #   p parmas 
-  #   p "***************"
-  #   @user = User.create(realname: params[:realname], username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation])
-  # if @user
-  #   session[:id] = @user.id
-  #   end 
-  #   redirect_to "/index"
-  # end 
-
-  def destroy  
-    session[:id] = nil
-    redirect_to "/index" 
-  end  
-
-  def login
-     
-  end
-
 end
 
 private
 
 def user_params
-  params.require(:user).permit(:realname, :username,  :password, :password_confirmation)
+  params.require(:user).permit(:firstname, :lastname, :username, :address, :password, :password_confirmation)
 end
