@@ -5,6 +5,7 @@ class CreateIssues < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :number
       t.text :detail
+      t.string :status
       t.references :user
       t.references :owner
 

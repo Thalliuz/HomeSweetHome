@@ -10,6 +10,10 @@ class OwnersController < ActionController::Base
   end
   
   def new
+    puts "************"
+    p params
+    p owner_params
+    puts "************"
     @owner = Owner.new
   end
 
@@ -32,5 +36,5 @@ end
 private
 
 def owner_params
-  params.require(:owner).permit(:realname, :username,  :password, :password_confirmation)
+  params.require(:owner).permit( :username, :firstname, :lastname, :address, :password, :password_confirmation)
 end
