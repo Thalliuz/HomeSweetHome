@@ -10,10 +10,6 @@ class OwnersController < ActionController::Base
   end
   
   def new
-    puts "************"
-    p params
-    p owner_params
-    puts "************"
     @owner = Owner.new
   end
 
@@ -21,7 +17,7 @@ class OwnersController < ActionController::Base
     @owner = Owner.new(owner_params)
     if @owner.save
       session[:owner_id] = @owner.id
-      redirect_to '/issues/owner_id'
+      redirect_to "/users/#{@user.id}"
     else
       render 'new'
     end

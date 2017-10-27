@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.string "address"
     t.string "number"
     t.text "detail"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.integer "user_id"
     t.integer "owner_id"
     t.datetime "created_at", null: false
