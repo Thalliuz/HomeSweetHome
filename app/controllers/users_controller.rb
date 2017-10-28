@@ -21,7 +21,7 @@ class UsersController < ActionController::Base
     params[:user][:owner_id] = Owner.find_by(firstname: params[:user][:owner_id].split(" ")[0]).id
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
       render "new"
