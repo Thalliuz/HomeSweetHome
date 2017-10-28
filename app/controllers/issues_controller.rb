@@ -12,18 +12,23 @@ class IssuesController < ActionController::Base
   
   def new
     @user = User.find(session[:id])
+    p @user
     @issue = Issue.new
   end
 
   def create
+    @user = User.find(session[:id])
     @issue = Issue.new(issue_params)
-
-      render 'new'
+    if @issue.save
+      redirect_to "/users/#{@user.id}"
+    else
+      render "new"
     end
+  end
 end
 
 private
 
 def issue_params
-  params.require(:issue).permit(:name, :address, :number, :detail)
+  params.require(:issue).permit(:name, :address, :detail, :user_id, :owner_id)
 end
