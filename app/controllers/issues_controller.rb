@@ -11,6 +11,7 @@ class IssuesController < ActionController::Base
   end
   
   def new
+    @user = User.find(session[:id])
     @issue = Issue.new
   end
 
