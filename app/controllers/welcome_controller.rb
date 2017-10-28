@@ -16,8 +16,8 @@ class WelcomeController < ApplicationController
     end 
   end
 
-  def destroy  
+  def logout 
     session[:id] = nil
-    redirect_to "/welcome/index" 
+    redirect_to "/" 
   end  
 end
