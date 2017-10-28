@@ -16022,3 +16022,254 @@ Processing by IssuesController#new as HTML
 Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.1ms)
 
 
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:04:36 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4c0r8G9LBGjiA+UQ5Jj6guJw8I9eM2ERVJJraEjCCYCvdzXjmCF7CFWNtyY8ZQkak9sSPUtv5uxEI8pA/5zCfw==", "issue"=>{"detail"=>"things"}, "commit"=>"create"}
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `full_name' for nil:NilClass:
+  app/views/issues/new.html.erb:7:in `_app_views_issues_new_html_erb___2112581045369620748_70297918806200'
+  app/controllers/issues_controller.rb:21:in `create'
+
+Started POST "/__better_errors/d5bd7328e006e195/variables" for 127.0.0.1 at 2017-10-28 18:04:36 -0400
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:10:50 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 62ms (Views: 29.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:10:55 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hpvuWZfRs+1OhVotW8R1p0DAbiOrqqQIGvjDjlZO56DIIfBKYLvMjfkLCBuDOYY/MWuMkb72I/UKSWKm4RAsXw==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"wpidnkwf"}, "commit"=>"create"}
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `full_name' for nil:NilClass:
+  app/views/issues/new.html.erb:7:in `_app_views_issues_new_html_erb___2112581045369620748_70297880263320'
+  app/controllers/issues_controller.rb:21:in `create'
+
+Started POST "/__better_errors/51d478a460045619/variables" for 127.0.0.1 at 2017-10-28 18:10:55 -0400
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:11:35 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 25ms (Views: 22.4ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:11:37 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JeXW2yrkPbgE3ImC/ZalgPTRuP8MjLiGYnmQBsJEYW1rX8jI3Y5C2LNS27Qla1YYhXpaTRnQP3tyyDEudRqqkg==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"sadsadsa"}, "commit"=>"create"}
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `address' for nil:NilClass:
+  app/views/issues/new.html.erb:8:in `_app_views_issues_new_html_erb___2112581045369620748_70297879947820'
+  app/controllers/issues_controller.rb:21:in `create'
+
+Started POST "/__better_errors/0d9c969ea0f9fb31/variables" for 127.0.0.1 at 2017-10-28 18:11:37 -0400
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:11:55 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 29ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:12:38 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jgzu2ilknZqJ0dZ8B9CAZqK1gC0DE1dZZLpMI6k/ryBotvDJ3g7i+j5fhErfLXP+0x5inxZP0KR0C+0LHmFk3w==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"qqd"}, "commit"=>"create"}
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.8ms)
+
+
+
+NoMethodError - undefined method `full_name' for nil:NilClass:
+  app/views/issues/new.html.erb:7:in `_app_views_issues_new_html_erb___2112581045369620748_70297911064120'
+  app/controllers/issues_controller.rb:22:in `create'
+
+Started POST "/__better_errors/586e9d82343e5a6f/variables" for 127.0.0.1 at 2017-10-28 18:12:38 -0400
+Started POST "/__better_errors/586e9d82343e5a6f/eval" for 127.0.0.1 at 2017-10-28 18:13:03 -0400
+Started POST "/__better_errors/586e9d82343e5a6f/eval" for 127.0.0.1 at 2017-10-28 18:13:10 -0400
+Started POST "/__better_errors/586e9d82343e5a6f/eval" for 127.0.0.1 at 2017-10-28 18:13:24 -0400
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:15:24 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 51ms (Views: 22.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:15:26 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Ro+VPfcZVVPGk22b+ZHQ4aw98lBqChHlC63A/tsvpmjoCBHALYaNfiUH4C3G7Tb9xsVe1T0r7qEnxYrTDJ1Zg==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"asaddsa"}, "commit"=>"create"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 29ms (Views: 24.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:19:51 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TYrd/+2p2+wNJbm6RoxJ4gZ/EF45LCW6O9v8+/wi+yUDMMPsGsOkjLqr64yecbp6d9Ty7Cxwokcral3TS3ww2g==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"asaddsa"}, "commit"=>"create"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 2.6ms)
+
+
+
+NoMethodError - undefined method `redirect' for #<IssuesController:0x007fdf0026d950>
+Did you mean?  redirect_to:
+  app/controllers/issues_controller.rb:22:in `create'
+
+Started POST "/__better_errors/40f97c0d256a6678/variables" for 127.0.0.1 at 2017-10-28 18:19:52 -0400
+Started GET "/issues" for 127.0.0.1 at 2017-10-28 18:20:09 -0400
+Processing by IssuesController#index as HTML
+  Rendering issues/index.html.erb within layouts/application
+  [1m[36mIssue Load (0.1ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/index.html.erb within layouts/application (12.8ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 45ms (Views: 37.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:20:13 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 61ms (Views: 36.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:20:15 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5Yaa9NgGfHzLnvJSk3eMZsEEIB/PZM6LA5/W8k5Ohc2rPITnL2wDHHwQoGRLin/+sK/Crdo4SXYTLnfa+RBOMg==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"asddsa"}, "commit"=>"create"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2017-10-28 18:20:15 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_nav.html.erb (2.4ms)
+Completed 200 OK in 33ms (Views: 29.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2017-10-28 18:24:47 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.1ms)[0m  [1m[34mSELECT "issues".* FROM "issues" WHERE "issues"."user_id" = ?[0m  [["user_id", 7]]
+  Rendered users/show.html.erb within layouts/application (12.6ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 80ms (Views: 37.7ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 11]]
+  [1m[36mIssue Load (0.3ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" ORDER BY "issues"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:28:08 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 68ms (Views: 29.4ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:28:11 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aWXv/i+1fF5rQGmJ+zoMCFeloaVWfqit2Cg5dupmaqKxxLBm5RWQLrfkgQz7eBU8jtZd3pfgPcZAVl1ctOUH0g==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "detail"=>"asdsadsa"}, "commit"=>"create"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 55ms (Views: 26.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/issues" for 127.0.0.1 at 2017-10-28 18:32:21 -0400
+Processing by IssuesController#index as HTML
+  Rendering issues/index.html.erb within layouts/application
+  [1m[36mIssue Load (0.1ms)[0m  [1m[34mSELECT "issues".* FROM "issues"[0m
+  Rendered issues/index.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_nav.html.erb (3.1ms)
+Completed 200 OK in 43ms (Views: 36.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/issues/new" for 127.0.0.1 at 2017-10-28 18:32:24 -0400
+Processing by IssuesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering issues/new.html.erb within layouts/application
+  Rendered issues/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_nav.html.erb (2.4ms)
+Completed 200 OK in 47ms (Views: 28.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/issues" for 127.0.0.1 at 2017-10-28 18:32:27 -0400
+Processing by IssuesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0v0B/NqYcE0l3Ze7Aa/N44Ajj0n60KPuGdiWmMkaWvWcRx/vLfIPLZJTxY3ZUj578Yht+++MJBMJaTewfkSRCg==", "issue"=>{"name"=>"other than", "address"=>"123hhhhh", "user_id"=>"7", "owner_id"=>"1", "detail"=>"sdsadas"}, "commit"=>"create"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "other than"], ["address", "123hhhhh"], ["detail", "sdsadas"], ["user_id", 7], ["owner_id", 1], ["created_at", "2017-10-28 22:32:27.369441"], ["updated_at", "2017-10-28 22:32:27.369441"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 54ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2017-10-28 18:32:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT "issues".* FROM "issues" WHERE "issues"."user_id" = ?[0m  [["user_id", 7]]
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 38ms (Views: 33.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/issues/3" for 127.0.0.1 at 2017-10-28 18:32:32 -0400
+Processing by IssuesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering issues/show.html.erb within layouts/application
+  Rendered issues/show.html.erb within layouts/application (9.6ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `name' for nil:NilClass:
+  app/views/issues/show.html.erb:6:in `_app_views_issues_show_html_erb___355141156432167388_70297913313320'
+
+Started POST "/__better_errors/038513d3dcd0c09a/variables" for 127.0.0.1 at 2017-10-28 18:32:32 -0400
+  [1m[36mIssue Load (0.2ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mCACHE Issue Load (0.0ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mCACHE Issue Load (0.0ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mCACHE Issue Load (0.0ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]
+  [1m[36mCACHE Issue Load (0.0ms)[0m  [1m[34mSELECT  "issues".* FROM "issues" WHERE "issues"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 11]]

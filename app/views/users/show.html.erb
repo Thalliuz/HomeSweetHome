@@ -1,10 +1,17 @@
 <div>
   <br><br><br><br>
-  <p>Hello, <%= @user.username  %>! 
-  <p>Manage your account</p>
-  <div>Set a reminder for when your rent is due.(want to add this if I have time.)</div>
-  <div>Username: <%= @user.username%></div>
-  <div>First Name: <%= @user.firstname%></div>
-  <div>Last Name: <%= @user.lastname%></div>
-  <div>Password: ***********</div>
+  <p>Hello, <%= @user.username  %>!</p>
+   <div class="card-container">
+    <% @issues.each do |issue| %>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="http://via.placeholder.com/318x180">
+        <div class="card-body">
+          <h4 class="card-title"><%= issue.name %></h4>
+          <h6 class="card-subtitle mb-2 text-muted"><%= issue.address %><br></h6>
+          <p class="card-text"><%= issue.detail %></p>
+          <%= link_to "More Details", issue_path(issue), class: "btn btn-primary"%>
+        </div>
+      </div>
+    <%end%>
+  </div>
 </div>

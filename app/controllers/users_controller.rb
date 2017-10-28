@@ -8,6 +8,7 @@ class UsersController < ActionController::Base
   def show
     id = params[:id]
     @user = User.find(id)
+    @issues = @user.issues
   end
   
   def new
