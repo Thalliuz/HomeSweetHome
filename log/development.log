@@ -14273,3 +14273,1604 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 26ms (Views: 21.3ms | ActiveRecord: 0.2ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171013144231)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171013144231"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIssues (20171016221401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "issues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "detail" text, "status" varchar DEFAULT 'Pending', "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_user_id" ON "issues" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_owner_id" ON "issues" ("owner_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171016221401"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProperties (20171023205831)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" text, "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_user_id" ON "properties" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_owner_id" ON "properties" ("owner_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171023205831"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateOwners (20171025154113)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171025154113"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-27 21:24:03.384847"], ["updated_at", "2017-10-27 21:24:03.384847"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Thallius"], ["firstname", "Anthony"], ["lastname", "Haler"], ["password_digest", "$2a$10$JLGkn8wPqizq531eAYULJ.2ZGc01y2.rvUb6dGRukfHA6CL4g8VxO"], ["created_at", "2017-10-27 21:24:12.546527"], ["updated_at", "2017-10-27 21:24:12.546527"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Yamikamisama"], ["firstname", "Michael"], ["lastname", "Haler"], ["password_digest", "$2a$10$HtI6SWf..WIcKS2K0CL32uKG6gV5lN56.U0rjcJc.Ber46cnVeBEq"], ["created_at", "2017-10-27 21:24:12.636319"], ["updated_at", "2017-10-27 21:24:12.636319"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Jmoney"], ["firstname", "Joe"], ["lastname", "Shmo"], ["address", "14 Mundo street"], ["password_digest", "$2a$10$MtIlnG8b.IRnxdciSbEunu5DJinYx3M0PektIJLBMOcLHoH/ZLOOe"], ["created_at", "2017-10-27 21:24:12.746943"], ["updated_at", "2017-10-27 21:24:12.746943"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Ilovejenny"], ["firstname", "Finkle"], ["lastname", "Howard"], ["address", "90 Flamingo dr."], ["password_digest", "$2a$10$II79RGN9tEFHBxaAAhH21eucpOxweFkjkB5PYvN.LeJJa03VZhKZS"], ["created_at", "2017-10-27 21:24:12.823359"], ["updated_at", "2017-10-27 21:24:12.823359"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Thallius"], ["firstname", "Anthony"], ["lastname", "Haler"], ["password_digest", "$2a$10$FEeZ43PQwFZxfXUvZhllzuw5ISB7HUT6c1ozKE6YjcvOmaMrI1J.6"], ["created_at", "2017-10-27 21:25:48.928694"], ["updated_at", "2017-10-27 21:25:48.928694"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Yamikamisama"], ["firstname", "Michael"], ["lastname", "Haler"], ["password_digest", "$2a$10$0kaxDsJNBweMfwDFIgv0BOKxsnsoUzHlme8aN5Y78gbFftd0qqPjq"], ["created_at", "2017-10-27 21:25:49.009358"], ["updated_at", "2017-10-27 21:25:49.009358"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Jmoney"], ["firstname", "Joe"], ["lastname", "Shmo"], ["address", "14 Mundo street"], ["password_digest", "$2a$10$PUCPt3J.2et5GeGzGyiHpeYAybbyJ0MPCJqb5lA.tM7IRKOOL5q1O"], ["created_at", "2017-10-27 21:25:49.125221"], ["updated_at", "2017-10-27 21:25:49.125221"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Ilovejenny"], ["firstname", "Finkle"], ["lastname", "Howard"], ["address", "90 Flamingo dr."], ["password_digest", "$2a$10$D6qaONQEFED.vocnSzdj0uaOAy4Jngh3IJkMfMZumi/YfQTldInES"], ["created_at", "2017-10-27 21:25:49.205758"], ["updated_at", "2017-10-27 21:25:49.205758"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.4ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "something street"], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-27 21:25:49.266892"], ["updated_at", "2017-10-27 21:25:49.266892"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "Pink Lion Lane"], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-27 21:25:49.272515"], ["updated_at", "2017-10-27 21:25:49.272515"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "status", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Anthony Haler"], ["address", "something street"], ["detail", "My refrigerator stopped working."], ["status", "pending"], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-27 21:25:49.297824"], ["updated_at", "2017-10-27 21:25:49.297824"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "status", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Michael Haler"], ["address", "Pink Lion Lane"], ["detail", "Mold in the walls please take a look."], ["status", "pending"], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-27 21:25:49.304431"], ["updated_at", "2017-10-27 21:25:49.304431"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/new" for 127.0.0.1 at 2017-10-27 17:28:40 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_nav.html.erb (2.8ms)
+Completed 200 OK in 417ms (Views: 387.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-27 17:28:54 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "thallius"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/welcome_controller.rb:11:in `login'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-27 17:31:19 -0400
+Processing by UsersController#new as HTML
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:31:29 -0400
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 64ms (Views: 37.4ms | ActiveRecord: 1.0ms)
+
+
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 34ms (Views: 29.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:31:31 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 31ms (Views: 28.9ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-27 17:31:41 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "thallius"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/welcome_controller.rb:12:in `login'
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:31:56 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 34ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:32:31 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 48ms (Views: 43.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:32:32 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 39ms (Views: 33.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-27 17:32:42 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"Thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 18ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-27 17:32:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 34ms (Views: 28.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 17:33:17 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 34ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-27 20:08:55 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"Thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 11ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-27 20:08:55 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 20:10:04 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 29ms (Views: 26.9ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-27 20:10:14 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"Thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 25ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-27 20:10:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 20:10:58 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/owners/new" for 127.0.0.1 at 2017-10-27 20:11:04 -0400
+Processing by OwnersController#new as HTML
+  Rendering owners/new.html.erb within layouts/application
+  Rendered owners/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 50ms (Views: 32.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 20:11:06 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_nav.html.erb (2.6ms)
+Completed 200 OK in 44ms (Views: 38.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-27 20:11:11 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 44ms (Views: 38.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-27 20:11:29 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+sxVRiKxSFvRJ9a+N/OB1/zagK9rg13nxUKX8l42hFOUefKSS0lez1EpTnZponft0AVDAFPs47iDEDAV7tJkCQ==", "user"=>{"username"=>"john", "firstname"=>"han", "lastname"=>"solo", "address"=>"123 abbey st.", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "john"], ["firstname", "han"], ["lastname", "solo"], ["address", "123 abbey st."], ["password_digest", "$2a$10$Q.lrXraZ4/fFeMQO6M84U.8lSOezT8qHMqzLX0nKCepu8d3aR4baG"], ["created_at", "2017-10-28 00:11:29.652608"], ["updated_at", "2017-10-28 00:11:29.652608"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 138ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 15:29:21 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (9.8ms)
+  Rendered layouts/_nav.html.erb (7.3ms)
+Completed 200 OK in 117ms (Views: 101.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:36:53 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (15.8ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `phonenumber' for #<User:0x007fca8a12b770>):
+    17:       </div>
+    18:       <div class="form-group">
+    19:         <label for="recipient-name" class="col-form-label">Address:</label>
+    20:         <%= f.text_field :phonenumber %>
+    21:       </div>
+    22:       <div class="form-group">
+    23:         <label for="recipient-name" class="col-form-label">Address:</label>
+  
+app/views/users/new.html.erb:20:in `block in _app_views_users_new_html_erb__3434191826475409744_70253946265260'
+app/views/users/new.html.erb:5:in `_app_views_users_new_html_erb__3434191826475409744_70253946265260'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171013144231)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "phonenumber" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171013144231"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIssues (20171016221401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "issues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "detail" text, "status" varchar DEFAULT 'pending', "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_user_id" ON "issues" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_owner_id" ON "issues" ("owner_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171016221401"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProperties (20171023205831)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" text, "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_user_id" ON "properties" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_owner_id" ON "properties" ("owner_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171023205831"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateOwners (20171025154113)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "phonenumber" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171025154113"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-28 19:37:43.388745"], ["updated_at", "2017-10-28 19:37:43.388745"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Thallius"], ["firstname", "Anthony"], ["lastname", "Haler"], ["password_digest", "$2a$10$.enGgGXAaulUCIBSMiFZjeyiyXrsnqaDsFEgq.LmZeBudBRqreFZm"], ["created_at", "2017-10-28 19:37:52.917973"], ["updated_at", "2017-10-28 19:37:52.917973"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Yamikamisama"], ["firstname", "Michael"], ["lastname", "Haler"], ["password_digest", "$2a$10$a465etyu90.U9/utdMd1eeZ5i1iaN4pwcM1uspvsDygXqs/cLxqPG"], ["created_at", "2017-10-28 19:37:52.995905"], ["updated_at", "2017-10-28 19:37:52.995905"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Jmoney"], ["firstname", "Joe"], ["lastname", "Shmo"], ["address", "14 Mundo street"], ["password_digest", "$2a$10$7gzyldpBOnZThvNrRC.GEeh4fSnLf3Lt.ye7MgT3nCv/GrpmNZBue"], ["created_at", "2017-10-28 19:37:53.103983"], ["updated_at", "2017-10-28 19:37:53.103983"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Ilovejenny"], ["firstname", "Finkle"], ["lastname", "Howard"], ["address", "90 Flamingo dr."], ["password_digest", "$2a$10$OxEbrZDjRBZ/CatZyJZm9eDsf5/BY/Ky2gHnXPWvptxc8VD72he76"], ["created_at", "2017-10-28 19:37:53.184869"], ["updated_at", "2017-10-28 19:37:53.184869"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "something street"], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-28 19:37:53.266112"], ["updated_at", "2017-10-28 19:37:53.266112"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "Pink Lion Lane"], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-28 19:37:53.276273"], ["updated_at", "2017-10-28 19:37:53.276273"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Anthony Haler"], ["address", "something street"], ["detail", "My refrigerator stopped working."], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-28 19:37:53.304664"], ["updated_at", "2017-10-28 19:37:53.304664"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Michael Haler"], ["address", "Pink Lion Lane"], ["detail", "Mold in the walls please take a look."], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-28 19:37:53.310948"], ["updated_at", "2017-10-28 19:37:53.310948"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-28 15:38:36 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (280.2ms)
+  Rendered layouts/_nav.html.erb (2.7ms)
+Completed 200 OK in 416ms (Views: 406.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 15:38:39 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:38:44 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 62ms (Views: 34.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:44:06 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (14.8ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 66ms (Views: 36.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:44:15 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (1.7ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 44ms (Views: 35.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:44:19 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 62ms (Views: 58.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:44:36 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.4ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_nav.html.erb (2.6ms)
+Completed 200 OK in 48ms (Views: 43.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:47:47 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 15:48:30 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 34ms (Views: 31.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:00:48 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 75ms (Views: 72.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:01:42 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:01:46 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.6ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 64ms (Views: 60.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:02:07 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.8ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:02:56 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:02:58 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:03:10 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 50ms (Views: 47.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:03:13 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:04:20 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:06:06 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:07:02 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 26ms (Views: 23.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:07:04 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:07:05 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_nav.html.erb (2.6ms)
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:08:19 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (8.1ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    26: 
+    27:         <select class="selectpicker">
+    28:           <%@owners.each do |owner|%>
+    29:             <option><%= "#{owner.firstname owner.lastname}"%></option>
+    30:           <%end%>
+    31:         </select>      
+    32: 
+  
+app/views/users/new.html.erb:29:in `block (2 levels) in _app_views_users_new_html_erb__861603159382580337_70339338319020'
+app/views/users/new.html.erb:28:in `block in _app_views_users_new_html_erb__861603159382580337_70339338319020'
+app/views/users/new.html.erb:5:in `_app_views_users_new_html_erb__861603159382580337_70339338319020'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:08:46 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 27ms (Views: 24.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:09:31 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:09:48 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:14:21 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:14:40 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:17:07 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 40ms (Views: 37.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:18:07 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:18:15 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 31ms (Views: 28.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:19:17 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 41ms (Views: 36.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:22:27 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 36ms (Views: 32.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2017-10-28 16:23:21 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 9ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=index):
+  
+app/controllers/users_controller.rb:10:in `show'
+Started GET "/users/index" for 127.0.0.1 at 2017-10-28 16:23:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 10ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=index):
+  
+app/controllers/users_controller.rb:10:in `show'
+Started GET "/users/index" for 127.0.0.1 at 2017-10-28 16:23:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=index):
+  
+app/controllers/users_controller.rb:10:in `show'
+Started GET "/users/index" for 127.0.0.1 at 2017-10-28 16:24:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=index):
+  
+app/controllers/users_controller.rb:10:in `show'
+Started GET "/users/1/index" for 127.0.0.1 at 2017-10-28 16:24:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/index"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/1/index" for 127.0.0.1 at 2017-10-28 16:29:08 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/index"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 16:29:13 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 34ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 16:29:22 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 16:29:27 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (12.4ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 37ms (Views: 32.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 16:29:39 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-28 16:29:40 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 44ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:29:44 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (11.5ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 38ms (Views: 32.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/landlords/new" for 127.0.0.1 at 2017-10-28 16:29:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/landlords/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-10-28 16:29:55 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 30ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 16:29:59 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:30:01 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:31:38 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendered users/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 16:35:31 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"exq/5MPiroLscsWXvNkeIQq/D0EAeBNca7pXSznLQhw1oKH3NIjR4lv8l6FkJO25exTt8xUklKF7C/ZjjpWJ4w==", "user"=>{"username"=>"thh", "firstname"=>"tthh", "lastname"=>"tthh", "phonenumber"=>"23456789", "address"=>"tthh", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "thh"], ["firstname", "tthh"], ["lastname", "tthh"], ["address", "tthh"], ["password_digest", "$2a$10$KGLiPz9edP/zbHvIl7SPPuaHhnelgrBVghshuJdTLrp9KbCuLvMBO"], ["created_at", "2017-10-28 20:35:31.566257"], ["updated_at", "2017-10-28 20:35:31.566257"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 281ms (ActiveRecord: 4.0ms)
+
+
+  
+NameError (undefined local variable or method `title' for #<UsersController:0x007ff24f32b3f8>):
+  
+app/controllers/users_controller.rb:22:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-10-28 16:38:43 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"exq/5MPiroLscsWXvNkeIQq/D0EAeBNca7pXSznLQhw1oKH3NIjR4lv8l6FkJO25exTt8xUklKF7C/ZjjpWJ4w==", "user"=>{"username"=>"thh", "firstname"=>"tthh", "lastname"=>"tthh", "phonenumber"=>"23456789", "address"=>"tthh", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "thh"], ["firstname", "tthh"], ["lastname", "tthh"], ["address", "tthh"], ["password_digest", "$2a$10$lcIXmrriR.hK8WBdtKDYiuGNPmqAAIF0gClCuB/MImsHF1WNXPNem"], ["created_at", "2017-10-28 20:38:43.976995"], ["updated_at", "2017-10-28 20:38:43.976995"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 265ms (ActiveRecord: 2.1ms)
+
+
+  
+NameError (undefined local variable or method `title' for #<UsersController:0x007ff24f760590>):
+  
+app/controllers/users_controller.rb:22:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-10-28 16:46:40 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"exq/5MPiroLscsWXvNkeIQq/D0EAeBNca7pXSznLQhw1oKH3NIjR4lv8l6FkJO25exTt8xUklKF7C/ZjjpWJ4w==", "user"=>{"username"=>"thh", "firstname"=>"tthh", "lastname"=>"tthh", "phonenumber"=>"23456789", "address"=>"tthh", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "thh"], ["firstname", "tthh"], ["lastname", "tthh"], ["address", "tthh"], ["password_digest", "$2a$10$A9NtGLuqb2pmRTT5SkYQ1uQz0mAq2sebNMvqjnuuqJQjpfx8qwEla"], ["created_at", "2017-10-28 20:46:40.930389"], ["updated_at", "2017-10-28 20:46:40.930389"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 234ms (ActiveRecord: 3.0ms)
+
+
+  
+NameError (undefined local variable or method `title' for #<UsersController:0x007ff253aef388>):
+  
+app/controllers/users_controller.rb:23:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:47:13 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (14.8ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `owner_id' for #<User:0x007ff252778020>
+Did you mean?  owner):
+    25:       </div>
+    26:       <div class="form-group">
+    27:         <label for="recipient-name" class="col-form-label">Address:</label>
+    28:         <%= f.select :owner_id, @owner_names %>
+    29:       </div>     
+    30:       <div class="form-group">
+    31:         <label for="recipient-name" class="col-form-label">Password:</label>
+  
+app/views/users/new.html.erb:28:in `block in _app_views_users_new_html_erb__861603159382580337_70339379957000'
+app/views/users/new.html.erb:5:in `_app_views_users_new_html_erb__861603159382580337_70339379957000'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171013144231)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "phonenumber" varchar, "password_digest" varchar, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_owner_id" ON "users" ("owner_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171013144231"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateIssues (20171016221401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "issues" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "detail" text, "status" varchar DEFAULT 'pending', "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_user_id" ON "issues" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_issues_on_owner_id" ON "issues" ("owner_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171016221401"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProperties (20171023205831)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" text, "user_id" integer, "owner_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_user_id" ON "properties" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_properties_on_owner_id" ON "properties" ("owner_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171023205831"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateOwners (20171025154113)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "firstname" varchar, "lastname" varchar, "address" varchar, "phonenumber" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171025154113"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-28 20:48:59.913630"], ["updated_at", "2017-10-28 20:48:59.913630"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_issues_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_owner_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_properties_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_owner_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_owner_id' AND type='index'
+[0m
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:49:11 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_nav.html.erb (2.3ms)
+Completed 200 OK in 378ms (Views: 327.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:49:36 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:50:27 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 73ms (Views: 23.0ms | ActiveRecord: 1.5ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Thallius"], ["firstname", "Anthony"], ["lastname", "Haler"], ["password_digest", "$2a$10$rIaOK8GAJCIn8HEDdfPnieWwxH/5vAfbVNt8RsyrKAa6Z6sbI4gLa"], ["created_at", "2017-10-28 20:51:27.573557"], ["updated_at", "2017-10-28 20:51:27.573557"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "Yamikamisama"], ["firstname", "Michael"], ["lastname", "Haler"], ["password_digest", "$2a$10$h6avv/X4sxPQPImxuc5AgufU6uIAd16VKsc8zJHpZXVWA34fylUNm"], ["created_at", "2017-10-28 20:51:27.655730"], ["updated_at", "2017-10-28 20:51:27.655730"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Jmoney"], ["firstname", "Joe"], ["lastname", "Shmo"], ["address", "14 Mundo street"], ["password_digest", "$2a$10$ojvTRa1heqvV79wm.6Sz1eInVQWRravukVg7MOi4qCuse8d/uvC96"], ["created_at", "2017-10-28 20:51:27.755752"], ["updated_at", "2017-10-28 20:51:27.755752"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "owners" ("username", "firstname", "lastname", "address", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Ilovejenny"], ["firstname", "Finkle"], ["lastname", "Howard"], ["address", "90 Flamingo dr."], ["password_digest", "$2a$10$FMXpHPgIbX2yFikj0U/m8eHX7JIlQjkwo6fGDlYctxCKV3Mn3ToDy"], ["created_at", "2017-10-28 20:51:27.840297"], ["updated_at", "2017-10-28 20:51:27.840297"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "something street"], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-28 20:51:27.886650"], ["updated_at", "2017-10-28 20:51:27.886650"]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "properties" ("address", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["address", "Pink Lion Lane"], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-28 20:51:27.895307"], ["updated_at", "2017-10-28 20:51:27.895307"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Anthony Haler"], ["address", "something street"], ["detail", "My refrigerator stopped working."], ["user_id", 1], ["owner_id", 1], ["created_at", "2017-10-28 20:51:27.925673"], ["updated_at", "2017-10-28 20:51:27.925673"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "issues" ("name", "address", "detail", "user_id", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Michael Haler"], ["address", "Pink Lion Lane"], ["detail", "Mold in the walls please take a look."], ["user_id", 2], ["owner_id", 2], ["created_at", "2017-10-28 20:51:27.932849"], ["updated_at", "2017-10-28 20:51:27.932849"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 16:51:37 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (11.1ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 307ms (Views: 252.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 16:51:59 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PIv0fh0BKCJwhh+3aq5DEfNnb98ZFmzhUJSYLMvb7KdyMept6mtXQscITYGyU7CJgsyNbQxK6xxAJTkEfIUnWA==", "user"=>{"username"=>"", "firstname"=>"", "lastname"=>"", "phonenumber"=>"", "address"=>"", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Unpermitted parameters: :phonenumber, :owner_id
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 109ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `empty?' for nil:NilClass):
+    25:       </div>
+    26:       <div class="form-group">
+    27:         <label for="recipient-name" class="col-form-label">Owner:</label>
+    28:         <%= f.select :owner_id, @owner_names %>
+    29:       </div>     
+    30:       <div class="form-group">
+    31:         <label for="recipient-name" class="col-form-label">Password:</label>
+  
+app/views/users/new.html.erb:28:in `block in _app_views_users_new_html_erb__703037196826695144_70157828380100'
+app/views/users/new.html.erb:5:in `_app_views_users_new_html_erb__703037196826695144_70157828380100'
+app/controllers/users_controller.rb:26:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:05:21 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_nav.html.erb (2.6ms)
+Completed 200 OK in 60ms (Views: 25.6ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:05:55 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"khjm38gZhWuTHcjlArGNus64pO6kwhxeNCygQJR1KeXcovjMP3P6CySTmtPaTH4ivxNGXLGem6MknQFoIyviGg==", "user"=>{"username"=>"yeah", "firstname"=>"hu", "lastname"=>"uh", "phonenumber"=>"123", "address"=>"123hh", "owner_id"=>"Finkle Howard", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/users_controller.rb:21:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:06:55 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 55ms (Views: 23.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:07:05 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CCERUhTIPauOSE/OZMPMxS3m69JlDEdJJhjC9vrtektGmw9B46JCyznGHfi8Pj9dXE0JYHBQwLQ2qWPeTbOxtA==", "user"=>{"username"=>"sadfsad", "firstname"=>"asdf", "lastname"=>"asdf", "phonenumber"=>"asdf", "address"=>"asdf", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/users_controller.rb:24:in `create'
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:07:23 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:07:24 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:07:49 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:08 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:13 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:25 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:37 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:51 -0400
+Started PUT "/__web_console/repl_sessions/c05dd434b52c2ee3b29d16e06d51d743" for 127.0.0.1 at 2017-10-28 17:08:56 -0400
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:09:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CCERUhTIPauOSE/OZMPMxS3m69JlDEdJJhjC9vrtektGmw9B46JCyznGHfi8Pj9dXE0JYHBQwLQ2qWPeTbOxtA==", "user"=>{"username"=>"sadfsad", "firstname"=>"asdf", "lastname"=>"asdf", "phonenumber"=>"asdf", "address"=>"asdf", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Joe"], ["LIMIT", 1]]
+Unpermitted parameters: :phonenumber, :owner_id
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.6ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/users_controller.rb:22:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:09:43 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 48ms (Views: 33.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:09:52 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q04cdtbVOMd0k/ZiTZ+IIY9BIJy5eqp+RSK5EIckXULl9AJlIb9Hp8MdpFSVYnu5/urCLqwmLYNVkxg4MHqWvQ==", "user"=>{"username"=>"sdf", "firstname"=>"sdf", "lastname"=>"sdf", "phonenumber"=>"sdf", "address"=>"sdf", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Joe"], ["LIMIT", 1]]
+Unpermitted parameters: :phonenumber, :owner_id
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/users_controller.rb:22:in `create'
+Started GET "/users" for 127.0.0.1 at 2017-10-28 17:12:06 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (189.1ms)
+  Rendered layouts/_nav.html.erb (2.3ms)
+Completed 200 OK in 244ms (Views: 226.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:12:12 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (13.4ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 109ms (Views: 40.3ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:12:25 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M7vPX3pB+tNPtrqYGolnxii/HzP9YeZpRthhc9OMfSB9AdFMjSuFs/g46K7CdJReWRT9geg9YZRWacBbZNK23w==", "user"=>{"username"=>"asd", "firstname"=>"asd", "lastname"=>"asd", "phonenumber"=>"asd", "address"=>"asd", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.5ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Joe"], ["LIMIT", 1]]
+Unpermitted parameters: :phonenumber, :owner_id
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms)
+
+
+
+ArgumentError - wrong number of arguments (given 2, expected 0..1):
+  app/controllers/users_controller.rb:22:in `create'
+
+Started POST "/__better_errors/a155459dde67d016/variables" for 127.0.0.1 at 2017-10-28 17:12:25 -0400
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:15:11 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 79ms (Views: 30.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:15:23 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_nav.html.erb (2.6ms)
+Completed 200 OK in 47ms (Views: 41.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:15:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uZ0Ybr9FfsWhaCCJVmfyMdH2bXc1biB/nntnrimkdk73JwZ9SC8BpRbmcr+OmgGpoF2PxSAyp4KOysaGnvq9sQ==", "user"=>{"username"=>"sad", "firstname"=>"das", "lastname"=>"ads", "phonenumber"=>"asd", "address"=>"sad", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.3ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Joe"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 215ms (ActiveRecord: 2.1ms)
+
+
+
+NameError - undefined local variable or method `owner_obj' for #<UsersController:0x007fdefe725d00>
+Did you mean?  owner_url:
+  app/controllers/users_controller.rb:35:in `user_params'
+  app/controllers/users_controller.rb:22:in `create'
+
+Started POST "/__better_errors/e458ef2b370a1ff3/variables" for 127.0.0.1 at 2017-10-28 17:15:42 -0400
+Started POST "/__better_errors/e458ef2b370a1ff3/variables" for 127.0.0.1 at 2017-10-28 17:15:57 -0400
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:19:37 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.8ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 74ms (Views: 32.5ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:19:54 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lf6rmFcVK3OXGNtPuo95nfmG+PzZWqhvXKiIVT0dO8HbRLWLoH9UEyCWiXlicooFiC0aTswGL5JMGSl9ikPwPg==", "user"=>{"username"=>"qweqw", "firstname"=>"wqewq", "lastname"=>"eqweq", "phonenumber"=>"qweeqw", "address"=>"ewqeqw", "owner_id"=>"Joe Shmo", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.6ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Joe"], ["LIMIT", 1]]
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "qweqw"], ["firstname", "wqewq"], ["lastname", "eqweq"], ["address", "ewqeqw"], ["password_digest", "$2a$10$zuuyLMCZJtymUc7YUWk4ueUr1DzsTLT4FYl.0CEjrMTSfDOFtfR6G"], ["owner_id", 1], ["created_at", "2017-10-28 21:19:54.856398"], ["updated_at", "2017-10-28 21:19:54.856398"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 144ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:20:41 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 70ms (Views: 32.6ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:21:11 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XtjNmxcuFKtYohxnP5El0XDo00dgU3hMNkFfdMWhpOwQYtOI4ERry+8sTlHnbNZJAUMx9XUP/7Em8P5ccv9vEw==", "user"=>{"username"=>"Apple", "firstname"=>"Walters", "lastname"=>"Walters", "phonenumber"=>"2", "address"=>"234", "owner_id"=>"Finkle Howard", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Finkle"], ["LIMIT", 1]]
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Apple"], ["firstname", "Walters"], ["lastname", "Walters"], ["address", "234"], ["password_digest", "$2a$10$74pDL.LQe67svw.EMRH5f.WEK.03vaQYTP5zgichppMEkZ7mTUMjS"], ["owner_id", 2], ["created_at", "2017-10-28 21:21:11.691156"], ["updated_at", "2017-10-28 21:21:11.691156"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+No template found for UsersController#create, rendering head :no_content
+Completed 204 No Content in 124ms (ActiveRecord: 2.5ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/users/new" for 127.0.0.1 at 2017-10-28 17:22:35 -0400
+Processing by UsersController#new as HTML
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT "owners".* FROM "owners"[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_nav.html.erb (2.0ms)
+Completed 200 OK in 79ms (Views: 36.0ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-28 17:23:03 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XKw1aQfV++xbwFyu7rKRimJaV5OiLgtgCePNsDloSy0SFit68L+EjOxODpg2T2ISE/G1IbdyjJ0ZUmyYjjaA0g==", "user"=>{"username"=>"Mooks", "firstname"=>"pooie", "lastname"=>"pooie", "phonenumber"=>"23942948", "address"=>"fdkflka", "owner_id"=>"Finkle Howard", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"create"}
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."firstname" = ? LIMIT ?[0m  [["firstname", "Finkle"], ["LIMIT", 1]]
+Unpermitted parameter: :phonenumber
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "firstname", "lastname", "address", "password_digest", "owner_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Mooks"], ["firstname", "pooie"], ["lastname", "pooie"], ["address", "fdkflka"], ["password_digest", "$2a$10$c0Vq2/CQMuhDa.FPNit9JuZGHCKotGWcRk.a9UMYvVFcpTsHmdDo."], ["owner_id", 2], ["created_at", "2017-10-28 21:23:03.193297"], ["updated_at", "2017-10-28 21:23:03.193297"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/#{@user.id}
+Completed 302 Found in 89ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2017-10-28 17:23:03 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2017-10-28 17:23:32 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 43ms (Views: 22.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:25:48 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-28 17:26:13 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"Thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.2ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-28 17:26:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:30:13 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 36ms (Views: 30.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/welcome/logout" for 127.0.0.1 at 2017-10-28 17:30:15 -0400
+
+AbstractController::ActionNotFound - The action 'logout' could not be found for WelcomeController:
+
+Started POST "/__better_errors/df84158d81fb2af5/variables" for 127.0.0.1 at 2017-10-28 17:30:15 -0400
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:31:49 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 26ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/welcome/logout" for 127.0.0.1 at 2017-10-28 17:31:54 -0400
+
+AbstractController::ActionNotFound - The action 'logout' could not be found for WelcomeController:
+
+Started POST "/__better_errors/d1c1fbbef814a961/variables" for 127.0.0.1 at 2017-10-28 17:31:54 -0400
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:35:06 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:36:40 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 24ms (Views: 22.1ms)
+
+
+Started GET "/welcome/logout" for 127.0.0.1 at 2017-10-28 17:36:43 -0400
+Processing by WelcomeController#logout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:36:43 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 28ms (Views: 23.9ms)
+
+
+Started POST "/welcome/login" for 127.0.0.1 at 2017-10-28 17:36:57 -0400
+Processing by WelcomeController#login as HTML
+  Parameters: {"username"=>"Thallius", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+  [1m[36mOwner Load (0.1ms)[0m  [1m[34mSELECT  "owners".* FROM "owners" WHERE "owners"."username" = ? LIMIT ?[0m  [["username", "Thallius"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 23ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-10-28 17:36:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/welcome/logout" for 127.0.0.1 at 2017-10-28 17:37:02 -0400
+Processing by WelcomeController#logout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-28 17:37:02 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+

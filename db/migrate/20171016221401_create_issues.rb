@@ -4,7 +4,7 @@ class CreateIssues < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :address
       t.text :detail
-      t.string :status, :default => 'Pending'
+      t.string :status, :default => 'pending'
       t.references :user
       t.references :owner
 
