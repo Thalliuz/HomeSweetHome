@@ -15,9 +15,8 @@ ActiveRecord::Schema.define(version: 20171025154113) do
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "number"
     t.text "detail"
-    t.string "status", default: "Pending"
+    t.string "status", default: "pending"
     t.integer "user_id"
     t.integer "owner_id"
     t.datetime "created_at", null: false
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.string "firstname"
     t.string "lastname"
     t.string "address"
+    t.string "phonenumber"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20171025154113) do
 
   create_table "properties", force: :cascade do |t|
     t.text "address"
-    t.string "number"
     t.integer "user_id"
     t.integer "owner_id"
     t.datetime "created_at", null: false
@@ -52,9 +51,12 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.string "firstname"
     t.string "lastname"
     t.string "address"
+    t.string "phonenumber"
     t.string "password_digest"
+    t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_users_on_owner_id"
   end
 
 end
