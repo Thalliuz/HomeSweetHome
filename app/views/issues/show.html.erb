@@ -3,11 +3,30 @@
     <div class="card" style="width: 20rem;">
       <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
       <div class="card-body">
+        <span class="badge badge-pill badge-secondary"><%=@issue.status%></span>
+        <%if @owner%>
+          <%= form_for(@issue) do |f| %>
+            <%= f.hidden_field :status, value: @issue.status%>
+          <%end%>
+          <%= form_for(@issue, url: "/issues/update")  do |f| %>
+            <%= f.hidden_field :id, value: @issue.id%>
+            <%= f.hidden_field :status, value: "In Progress"%>
+            <%= f.submit "In Progress" , class: "btn btn-warning" %>
+          <%end%>
+          <%= form_for(@issue, url: "/issues/update")  do |f| %>
+            <%= f.hidden_field :id, value: @issue.id%>
+            <%= f.hidden_field :status, value: "Complete"%>
+            <%= f.submit "Complete" , class: "btn btn-success" %>
+          <%end%>
+        <%else%>
+          <%= form_for(@issue, method: :delete) do |f| %>
+            <%= f.hidden_field :id, value: @issue.id%>
+            <%= f.submit "Delete" , class: "btn btn-danger" %>
+          <%end%>
+        <%end%>
         <h4 class="card-title"><%= @issue.name %></h4>
         <h6 class="card-subtitle mb-2 text-muted"><%= @issue.address %><br></h6>
         <p class="card-text"><%= @issue.detail %></p>
-        <h4><%= @issue.status %></h4><a href="" class="button">Edit Status</button><br>
-        <a href="#" class="btn btn-primary">More Details</a>
       </div>
     </div>
 </div>

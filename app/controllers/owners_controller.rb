@@ -7,6 +7,7 @@ class OwnersController < ActionController::Base
   def show
     id = params[:id]
     @owner = Owner.find(id)
+    @issues = @owner.issues
   end
   
   def new
@@ -16,8 +17,8 @@ class OwnersController < ActionController::Base
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
-      session[:owner_id] = @owner.id
-      redirect_to "/users/#{@user.id}"
+      session[:id] = @owner.id
+      redirect_to "/owners/#{@owner.id}"
     else
       render 'new'
     end
@@ -32,5 +33,5 @@ end
 private
 
 def owner_params
-  params.require(:owner).permit( :username, :firstname, :lastname, :address, :password, :password_confirmation)
+  params.require(:owner).permit( :username, :firstname, :lastname, :phonenumber, :address, :password, :password_confirmation)
 end
