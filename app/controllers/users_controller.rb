@@ -33,5 +33,5 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:owner_id, :firstname, :lastname, :username, :address, :password, :password_confirmation)
+  params.require(:user).permit(:owner_id, :firstname, :lastname, :phonenumber, :username, :address, :password, :password_confirmation)
 end

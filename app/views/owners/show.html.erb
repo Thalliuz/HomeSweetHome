@@ -1,10 +1,24 @@
 <div>
   <br><br><br><br>
-  <p>Hello, <%= @owner.username  %>! 
-  <p>Manage your account</p>
-  <div>Username: <%= @owner.username%></div>
-  <div>First Name: <%= @owner.firstname%></div>
-  <div>Last Name: <%= @owner.lastname%></div>
-  <div>Password: ********** (Add a chnage button so that you can update your password</div> 
-  <div>ISSUES BUTON HERE TO GO TO ALL OF THE ISSUES WORKING ON</div>
+  <p>Hello, <%= @owner.username  %>!</p>
+   <div class="card-container">
+    <% @issues.each do |issue| %>
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="http://via.placeholder.com/318x180">
+        <div class="card-body">
+          <h4 class="card-title"><%= issue.name %></h4>
+          <h6 class="card-subtitle mb-2 text-muted"><%= issue.address %><br></h6>
+          <% if issue.status == "pending" %>
+            <span class="badge badge-pill badge-secondary"><%= issue.status%></span>
+          <% elsif issue.status == "In Progress" %>
+            <span class="badge badge-pill badge-warning"><%= issue.status%></span>
+          <% else %>
+            <span class="badge badge-pill badge-success"><%= issue.status%></span>
+          <% end %>
+          <p class="card-text"><%= issue.detail %></p>
+          <%= link_to "More Details", issue_path(issue), class: "btn btn-primary"%>
+        </div>
+      </div>
+    <%end%>
+  </div>
 </div>

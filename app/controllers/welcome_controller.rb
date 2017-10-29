@@ -8,10 +8,11 @@ class WelcomeController < ApplicationController
   def login
     @user = User.find_by(username: params[:username])
     @owner = Owner.find_by(username: params[:username])
-    session[:id] = @user.id || @owner.id
     if @owner 
+      session[:id] = @owner.id
       redirect_to "/owners/#{@owner.id}"
     else
+      session[:id] = @user.id
       redirect_to "/users/#{@user.id}"
     end 
   end
