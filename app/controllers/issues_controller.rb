@@ -61,7 +61,7 @@ def twilio_call
     @client.api.account.messages.create(
       from: '+18566662318',
       to: "+1#{@owner_number}",
-      body: "Home Sweet Home #{@user.address} #{@issue.detail}"
+      body: "This is Home Sweet Home letting you know that your property #{@user.address}, has a new issue: #{@issue.detail}"
     )
   else
     id = @issue.user_id
@@ -70,7 +70,7 @@ def twilio_call
     @client.api.account.messages.create(
       from: '+18566662318',
       to: "+1#{@user_number}",
-      body: "Home Sweet Home The progress of your issue at #{@user.address} is now #{@issue.status}"
+      body: "This is Home Sweet Home! The progress of your issue at #{@user.address} is now #{@issue.status}"
     )
   end 
 end
