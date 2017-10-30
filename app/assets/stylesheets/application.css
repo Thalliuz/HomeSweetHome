@@ -45,3 +45,11 @@ textarea {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
+.new-page {
+    margin-top: 35px;
+}
+
+.card-img-top {
+  max-height: 180px;
+}
