@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20171025154113) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.text "detail"
     t.string "status", default: "pending"
     t.string "url", default: "http://via.placeholder.com/318x180"
-    t.integer "user_id"
-    t.integer "owner_id"
+    t.bigint "user_id"
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_issues_on_owner_id"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.string "address"
     t.string "phonenumber"
     t.string "password_digest"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_users_on_owner_id"
