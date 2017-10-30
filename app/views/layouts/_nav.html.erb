@@ -11,12 +11,12 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <% if session[:type] == "user" %>
-            <a href="/issues/new" class="btn btn-primary">Create Issue</a>
-            <a href="/welcome/logout" class="btn btn-primary">Logout</a>
+            <a href="/issues/new" class="login-btn btn btn-primary">Create Issue</a>
+            <a href="/welcome/logout" class="login-btn btn btn-primary">Logout</a>
             <%elsif session[:type] == "owner"%>
-            <a href="/welcome/logout" class="btn btn-primary">Logout</a>
+            <a href="/welcome/logout" class="login-btn btn btn-primary">Logout</a>
           <%else%>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">Login</button>
+            <button type="button" class="login-btn btn btn-primary" data-toggle="modal" data-target="#login">Login</button>
           <%end%>
         </li>
       </ul>
