@@ -1,18 +1,37 @@
 <div>
-  <br><br><br><br>
-  <p>Hello, <%= @user.username  %>!</p>
+  <br/>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <% if @issues.length == 0 %>
+        <h1 class="display-4">Hello, <%= @user.username  %>!</h1>
+        <p class="lead">This is the where you can create and view your <span class="text-danger">Issues</span></p>
+      <% else %>
+        <h1 class="display-4"><%= @user.username  %>, you currently have <span class="text-danger"><%=@issues.length%> issue(s)</span> created.</h1>
+      <% end %>
+    </div>
+  </div>
    <div class="card-container">
-    <% @issues.each do |issue| %>
-      <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="http://via.placeholder.com/318x180">
-        <div class="card-body">
-          <span class="badge badge-pill badge-secondary"><%= issue.status%></span>
-          <h4 class="card-title"><%= issue.name %></h4>
-          <h6 class="card-subtitle mb-2 text-muted"><%= issue.address %><br></h6>
-          <p class="card-text"><%= issue.detail %></p>
-          <%= link_to "More Details", issue_path(issue), class: "btn btn-primary"%>
+    <div class="row justify-content-md-center justify-content-lg-center">
+      <% @issues.each do |issue| %>
+        <div class="col-sm-12 col-md-12 col-lg-3">
+          <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://via.placeholder.com/318x180">
+            <div class="card-body">
+              <% if issue.status == "pending" %>
+                <span class="badge badge-pill badge-secondary"><%= issue.status%></span>
+              <% elsif issue.status == "In Progress" %>
+                <span class="badge badge-pill badge-warning"><%= issue.status%></span>
+              <% else %>
+                <span class="badge badge-pill badge-success"><%= issue.status%></span>
+              <% end %>
+              <h4 class="card-title"><%= issue.name %></h4>
+              <h6 class="card-subtitle mb-2 text-muted"><%= issue.address %><br></h6>
+              <p class="card-text"><%= issue.detail %></p>
+              <%= link_to "More Details", issue_path(issue), class: "btn btn-primary"%>
+            </div>
+          </div>
         </div>
-      </div>
-    <%end%>
+      <%end%>
+    </div>
   </div>
 </div>

@@ -13,7 +13,6 @@ class IssuesController < ActionController::Base
   
   def new
     @user = User.find(session[:id])
-    p @user
     @issue = Issue.new
   end
 
@@ -35,6 +34,7 @@ class IssuesController < ActionController::Base
     id = params[:issue][:id]
     @issue = Issue.find(id)
     @issue.update_attributes issue_params
+    twilio_call
     redirect_to "/owners/#{@issue.owner_id}"
   end 
 
@@ -55,7 +55,7 @@ def twilio_call
   auth_token = ENV['AUTH_TOKEN']
 
   @client = Twilio::REST::Client.new account_sid, auth_token
-  if @user 
+  if session[:type] == "user"
     id = @user.owner_id
     @owner_number = Owner.find(id).phonenumber
     @client.api.account.messages.create(
@@ -64,14 +64,14 @@ def twilio_call
       body: "Home Sweet Home #{@user.address} #{@issue.detail}"
     )
   else
-    # When I have more time come back and make it so that Owners can make issues as well
-    # id = @owner.user_id
-    # @owner_number = Owner.find(id).phonenumber
-    # @client.api.account.messages.create(
-    #   from: '+18566662318',
-    #   to: "+1#{@owner_number}",
-    #   body: "Home Sweet Home #{@user.address} #{@issue.detail}"
-    # )
+    id = @issue.user_id
+    @user = User.find(id)
+    @user_number = User.find(id).phonenumber
+    @client.api.account.messages.create(
+      from: '+18566662318',
+      to: "+1#{@user_number}",
+      body: "Home Sweet Home The progress of your issue at #{@user.address} is now #{@issue.status}"
+    )
   end 
 end
 def issue_params

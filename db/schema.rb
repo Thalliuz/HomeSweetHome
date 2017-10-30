@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "properties", force: :cascade do |t|
-    t.text "address"
-    t.integer "user_id"
-    t.integer "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_properties_on_owner_id"
-    t.index ["user_id"], name: "index_properties_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "firstname"

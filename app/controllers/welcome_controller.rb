@@ -10,15 +10,18 @@ class WelcomeController < ApplicationController
     @owner = Owner.find_by(username: params[:username])
     if @owner 
       session[:id] = @owner.id
+      session[:type] = "owner"
       redirect_to "/owners/#{@owner.id}"
     else
       session[:id] = @user.id
+      session[:type] = "user"
       redirect_to "/users/#{@user.id}"
     end 
   end
 
   def logout 
     session[:id] = nil
+    session[:type] = nil
     redirect_to "/" 
   end  
 end
