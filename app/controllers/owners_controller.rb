@@ -18,6 +18,7 @@ class OwnersController < ActionController::Base
     @owner = Owner.new(owner_params)
     if @owner.save
       session[:id] = @owner.id
+      session[:type] = "owner"
       redirect_to "/owners/#{@owner.id}"
     else
       render 'new'

@@ -23,6 +23,7 @@ class UsersController < ActionController::Base
     @user = User.new(user_params)
     if @user.save
       session[:id] = @user.id
+      session[:type] = "user"
       redirect_to "/users/#{@user.id}"
     else
       render "new"

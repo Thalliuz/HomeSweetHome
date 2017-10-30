@@ -10,8 +10,10 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <% if session[:id] %>
+          <% if session[:type] == "user" %>
             <a href="/issues/new" class="btn btn-primary">Create Issue</a>
+            <a href="/welcome/logout" class="btn btn-primary">Logout</a>
+            <%elsif session[:type] == "owner"%>
             <a href="/welcome/logout" class="btn btn-primary">Logout</a>
           <%else%>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">Login</button>
