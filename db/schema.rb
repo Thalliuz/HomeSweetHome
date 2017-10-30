@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171025154113) do
     t.string "address"
     t.text "detail"
     t.string "status", default: "pending"
+    t.string "url", default: "http://via.placeholder.com/318x180"
     t.integer "user_id"
     t.integer "owner_id"
     t.datetime "created_at", null: false
