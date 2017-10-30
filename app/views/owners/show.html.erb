@@ -15,7 +15,7 @@
       <% @issues.each do |issue| %>
         <div class="col-sm-12 col-md-12 col-lg-3">
           <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="http://via.placeholder.com/318x180">
+            <img class="card-img-top" src="<%=issue.url%>">
             <div class="card-body">
              <% if issue.status == "pending" %>
                <span class="badge badge-pill badge-secondary"><%= issue.status%></span>
