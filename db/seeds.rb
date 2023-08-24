@@ -1,10 +1,8 @@
 User.create(firstname: 'Ryan',lastname: 'Stadler', username: 'Finkle', address: '12 Golden Triangle, Cherry Hill, NJ',phonenumber: '8562297878', password: '123')
 User.create(firstname: 'Dereck',lastname: 'Berchutte', username: 'EaglesFan', address: '2020 west kngs hwy, Cherry Hill, NJ', phonenumber: '8562297878', password: '123')
-User.create(firstname: 'Thomas',lastname: 'Mercer', username: 'MegaManXXV', address: '14 Thomas St, Toms River, NJ', phonenumber: '8562297878', password: '123')
 User.create(firstname: 'Cooper',lastname: 'Loopa', username: '', address: ' 33 Core Snake Ave, Cherry Hill, NJ', phonenumber: '8562297878', password: '123')
 
 Owner.create(firstname: 'Tiffany',lastname: 'Peon', username: 'GuineaGirl', address: '12 Queens Boulevard, Elmhurst, NY', phonenumber: '8565626606', password: '123')
-Owner.create(firstname: 'Morgan',lastname: 'Emers', username: 'MoMo', address: '12 Queens Boulevard, Elmhurst, NY', phonenumber: '8565626606', password: '123')
 Owner.create(firstname: 'James',lastname: 'Bond', username: 'Bond Corperation', address: '12 Queens Boulevard, Elmhurst, NY', phonenumber: '8565626606', password: '123')
 
 
